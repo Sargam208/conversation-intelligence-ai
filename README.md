@@ -105,13 +105,13 @@ This enables users to quickly understand long conversations without manually rea
 <tr>
 <td align="center">
 
-<img src="screenshots/sidebar.png" width="200">
+<img src="screenshots/sidebar.png" width="270">
 
 </td>
 
 <td align="center">
 
-<img src="screenshots/sidebar1.png" width="300">
+<img src="screenshots/sidebar1.png" width="350">
 
 </td>
 </tr>
