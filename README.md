@@ -101,10 +101,21 @@ This enables users to quickly understand long conversations without manually rea
 
 ## sidebar
 
-<p align="center">
-<img src="screenshots/sidebar1.png" width="300">
-</p>
+<table>
+<tr>
+<td align="center">
 
+<img src="screenshots/sidebar.png" width="200">
+
+</td>
+
+<td align="center">
+
+<img src="screenshots/sidebar1.png" width="300">
+
+</td>
+</tr>
+</table>
 
 ---
 
