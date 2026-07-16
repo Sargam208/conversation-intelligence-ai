@@ -2,11 +2,11 @@ import streamlit as st
 
 from backend.pipeline.ingestion_pipeline import IngestionPipeline
 
-from controller.app_controller import run_app
+from app.controller.app_controller import run_app
 from config import FAVICON
 
-from frontend.styles import apply_styles
-from frontend.landing import render_landing
+from app.frontend.styles import apply_styles
+from app.frontend.landing import render_landing
 
 
 st.markdown(
