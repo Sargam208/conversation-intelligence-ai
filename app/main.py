@@ -1,12 +1,16 @@
+import os
+import sys
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import streamlit as st
 
 from backend.pipeline.ingestion_pipeline import IngestionPipeline
 
-from app.controller.app_controller import run_app
+from controller.app_controller import run_app
 from config import FAVICON
 
-from app.frontend.styles import apply_styles
-from app.frontend.landing import render_landing
+from frontend.styles import apply_styles
+from frontend.landing import render_landing
 
 
 st.markdown(
