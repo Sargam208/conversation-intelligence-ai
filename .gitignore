@@ -1,0 +1,24 @@
+# Virtual Environment
+venv/
+
+# Environment Variables
+.env
+
+# VS Code
+.vscode/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# Database
+data/conversation.db
+
+# Uploaded Chats
+data/uploads/
+
+# ChromaDB Vector Store
+data/vector_store/

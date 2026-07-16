@@ -1,0 +1,7 @@
+[theme]
+primaryColor = "#2A9DF4"            # Vibrant sky blue for accents and buttons
+backgroundColor = "#FFFFFF"         # White base to match the bottom gradient
+secondaryBackgroundColor = "#E1F5FE" # Soft ice-blue for sidebar and text inputs
+textColor = "#102A43"               # Dark slate-blue text for crisp reading
+font = "sans serif"
+
