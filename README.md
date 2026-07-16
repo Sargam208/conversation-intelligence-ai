@@ -111,7 +111,7 @@ This enables users to quickly understand long conversations without manually rea
 
 <td align="center">
 
-<img src="screenshots/sidebar1.png" width="350">
+<img src="screenshots/sidebar1.png" width="310">
 
 </td>
 </tr>
