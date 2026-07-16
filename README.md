@@ -10,7 +10,7 @@
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
 ![LangChain](https://img.shields.io/badge/LangChain-121212?style=for-the-badge)
 ![Groq](https://img.shields.io/badge/Groq-LLM-blue?style=for-the-badge)
-![ChromaDB](https://img.shields.io/badge/ChromaDB-VectorDB-success?style=for-the-badge)
+![Faiss vectorindex](https://img.shields.io/badge/Faiss-vectorindex-success?style=for-the-badge)
 ![Sentence Transformers](https://img.shields.io/badge/Sentence--Transformers-Embeddings-orange?style=for-the-badge)
 
 </p>
@@ -63,7 +63,7 @@ The application performs the following tasks:
 - Parses exported WhatsApp chat files
 - Cleans and structures conversation data
 - Generates semantic embeddings for every conversation chunk
-- Stores embeddings inside a ChromaDB Vector Database
+- Stores embeddings inside a Faiss Vector Index
 - Uses Retrieval-Augmented Generation (RAG) for contextual understanding
 - Generates AI-powered summaries and insights using Groq LLM
 - Presents results through an interactive Streamlit dashboard
@@ -84,7 +84,7 @@ This enables users to quickly understand long conversations without manually rea
 | Conversation Analytics | Visualize participant activity and conversation trends |
 | Date Range Filtering | Analyze the complete conversation or specific date ranges |
 | Semantic Search | Retrieve relevant messages based on meaning instead of keywords |
-| Local Vector Database | Store embeddings efficiently using ChromaDB |
+| Local Vector Database | Store embeddings efficiently using Faiss Vector Index |
 | Modern Dashboard | Interactive Streamlit-based user interface |
 
 ---
@@ -101,21 +101,10 @@ This enables users to quickly understand long conversations without manually rea
 
 ## sidebar
 
-<table>
-<tr>
-<td align="center">
+<p align="center">
+<img src="screenshots/sidebar1.png" width="900">
+</p>
 
-<img src="screenshots/sidebar.png" width="450">
-
-</td>
-
-<td align="center">
-
-<img src="screenshots/sidebar1.png" width="450">
-
-</td>
-</tr>
-</table>
 
 ---
 
@@ -185,87 +174,9 @@ This enables users to quickly understand long conversations without manually rea
 
 # System Architecture
 
-```text
-                                   +--------------------------------+
-                                   |      WhatsApp Chat (.txt)      |
-                                   +---------------+----------------+
-                                                   │
-                                                   ▼
-                                   +--------------------------------+
-                                   |      Ingestion Pipeline        |
-                                   |                                |
-                                   |  • Parse Messages              |
-                                   |  • Clean Text                  |
-                                   |  • Metadata Extraction         |
-                                   +---------------+----------------+
-                                                   │
-                                                   ▼
-                                   +--------------------------------+
-                                   |         Text Chunking          |
-                                   |                                |
-                                   | Split Conversation into        |
-                                   | Semantic Chunks                |
-                                   +---------------+----------------+
-                                                   │
-                                                   ▼
-                     +---------------------------------------------------------+
-                     |      Sentence Transformer Embeddings                    |
-                     |                                                         |
-                     |             all-MiniLM-L6-v2                            |
-                     +---------------------------+-----------------------------+
-                                                 │
-                                                 ▼
-                     +---------------------------------------------------------+
-                     |             ChromaDB Vector Database                    |
-                     +---------------------------+-----------------------------+
-                                                 │
-                          ┌──────────────────────┴──────────────────────┐
-                          │                                             │
-                          ▼                                             ▼
-          +--------------------------------+          +--------------------------------+
-          |     Semantic Retrieval (RAG)   |          | Conversation Analysis Agent    |
-          |                                |          |                                |
-          | • Similarity Search            |          | • Prompt Orchestration         |
-          | • Context Retrieval            |          | • Structured Analysis          |
-          +---------------+----------------+          +---------------+----------------+
-                          │                                             │
-                          └──────────────────────┬──────────────────────┘
-                                                 │
-                                                 ▼
-                     +---------------------------------------------------------+
-                     |            Groq LLM (Llama 3.3-70B)                     |
-                     +---------------------------+-----------------------------+
-                                                 │
-                                                 ▼
-       +--------------------------------------------------------------------------------+
-       |                            AI Generated Insights                               |
-       |--------------------------------------------------------------------------------|
-       |                                                                                |
-       |  • Executive Summary                                                           |
-       |  • Key Discussion Topics                                                       |
-       |  • Important Decisions                                                         |
-       |  • Action Items                                                                |
-       |  • Conversation Analytics                                                      |
-       |  • AI-powered Question Answering                                               |
-       |                                                                                |
-       +------------------------------------+-------------------------------------------+
-                                            │
-                                            ▼
-                     +---------------------------------------------------------+
-                     |         Streamlit Interactive Dashboard                 |
-                     |---------------------------------------------------------|
-                     |                                                         |
-                     |  • Landing Page                                         |
-                     |  • Sidebar Filters                                      |
-                     |  • Executive Summary                                    |
-                     |  • Discussion Topics                                    |
-                     |  • Key Decisions                                        |
-                     |  • Action Items                                         |
-                     |  • Analytics Dashboard                                  |
-                     |  • Smart Q&A Assistant                                  |
-                     |                                                         |
-                     +---------------------------------------------------------+
-```
+<p align="center">
+  <img src="screenshots/architecture.png" alt="System Architecture" width="900">
+</p>
 
 ---
 # Project Workflow
@@ -325,7 +236,7 @@ These embeddings capture the semantic meaning of the conversation instead of rel
 
 ### Step 6 — Vector Storage
 
-Generated embeddings are stored inside **ChromaDB**.
+Generated embeddings are stored inside **Faiss**.
 
 This allows efficient similarity search and semantic retrieval during question answering.
 
@@ -350,7 +261,7 @@ When a user asks a question,
 
 the application:
 
-- retrieves the most relevant conversation chunks from ChromaDB
+- retrieves the most relevant conversation chunks from Faiss vector index
 - provides them as context to the LLM
 - generates an accurate, context-aware response
 
@@ -377,7 +288,7 @@ The processed information is displayed through an interactive Streamlit dashboar
 | **Frontend** | Streamlit |
 | **LLM Framework** | LangChain |
 | **Large Language Model** | Groq (Llama) |
-| **Vector Database** | ChromaDB |
+| **Vector Database** | FaissDB |
 | **Embedding Model** | Sentence Transformers (all-MiniLM-L6-v2) |
 | **Database** | SQLite |
 | **Data Processing** | Pandas |
@@ -480,9 +391,9 @@ The agent:
 
 ---
 
-## Vector Database
+## Faiss vector Index
 
-ChromaDB stores semantic embeddings generated from conversation chunks.
+Faiss stores semantic embeddings generated from conversation chunks.
 
 This enables efficient semantic retrieval during question answering.
 

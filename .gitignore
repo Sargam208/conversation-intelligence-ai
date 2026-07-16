@@ -20,5 +20,5 @@ data/conversation.db
 # Uploaded Chats
 data/uploads/
 
-# ChromaDB Vector Store
+# FaissDB Vector Store
 data/vector_store/

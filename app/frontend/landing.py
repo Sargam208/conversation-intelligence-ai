@@ -153,7 +153,7 @@ def render_landing():
         Built with
         <b>LangChain</b> •
         <b>Groq</b> •
-        <b>ChromaDB</b> •
+        <b>Faiss</b> •
         <b>Sentence Transformers</b> •
         <b>Streamlit</b>
 
