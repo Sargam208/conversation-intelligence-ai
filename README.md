@@ -102,7 +102,7 @@ This enables users to quickly understand long conversations without manually rea
 ## sidebar
 
 <p align="center">
-<img src="screenshots/sidebar1.png" width="900">
+<img src="screenshots/sidebar1.png" width="300">
 </p>
 
 
